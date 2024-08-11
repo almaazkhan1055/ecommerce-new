@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const navigation = [
   { name: "Home" },
@@ -25,6 +26,11 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/cart");
+  };
   return (
     <Disclosure as="header" className="">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
@@ -75,7 +81,11 @@ export default function Navbar() {
               type="button"
               className="relative flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
-              <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
+              <ShoppingCartIcon
+                aria-hidden="true"
+                className="h-6 w-6"
+                onClick={handleClick}
+              />
             </button>
 
             <Menu as="div" className="relative ml-4 flex-shrink-0">

@@ -5,6 +5,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import ProductQuickview from "../productQuickview";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -12,7 +13,7 @@ function classNames(...classes) {
 
 const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState();
-  console.log(selectedProduct);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const params = useParams();
   const productId = decodeURIComponent(params.product || "");
@@ -22,6 +23,10 @@ const Product = () => {
       .then((res) => res.json())
       .then((data) => setSelectedProduct(data));
   }, []);
+
+  const handleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   return (
     <>
@@ -81,9 +86,17 @@ const Product = () => {
                 <button
                   type="button"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-xl font-bold  text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  onClick={handleModal}
                 >
                   Preview
                 </button>
+                {modalOpen && (
+                  <ProductQuickview
+                    selectedProduct={selectedProduct}
+                    open={modalOpen}
+                    setOpen={handleModal}
+                  />
+                )}
               </div>
               <p className="mt-6  font-bold text-xl">
                 {selectedProduct?.availabilityStatus} Only-
@@ -112,7 +125,7 @@ const Product = () => {
 
                     {selectedProduct?.reviews.map((review, reviewIdx) => (
                       <div
-                        key={review.id}
+                        key={reviewIdx}
                         className="flex space-x-4 text-sm text-gray-500"
                       >
                         <div className="flex-none py-10">
