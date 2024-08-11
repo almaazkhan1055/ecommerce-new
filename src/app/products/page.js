@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export default function AllProducts() {
@@ -17,7 +17,8 @@ export default function AllProducts() {
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 cursor-pointer shadow-lg hover:shadow-xl"
     >
       {allProducts?.map((product) => (
-        <li
+        <Link
+          href={`/products/${encodeURIComponent(product.id)}`}
           key={product.id}
           className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
         >
@@ -40,7 +41,7 @@ export default function AllProducts() {
               </dd>
             </dl>
           </div>
-        </li>
+        </Link>
       ))}
     </ul>
   );

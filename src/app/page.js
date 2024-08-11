@@ -1,6 +1,6 @@
 import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
-import AllProducts from "@/components/products/page";
+import AllProducts from "@/app/products/page";
 import ContentWrapper from "@/components/wrapper";
 import React from "react";
 

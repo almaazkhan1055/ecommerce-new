@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ContentWrapper from "@/components/wrapper";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Navbar from "@/components/navbar";
-import Image from "next/image";
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,7 +15,6 @@ const CategoryPage = () => {
   const category = decodeURIComponent(params.category || "");
 
   const [products, setProducts] = useState([]);
-  console.log(products);
 
   useEffect(() => {
     if (category) {
@@ -37,7 +36,8 @@ const CategoryPage = () => {
             <h2 className="text-2xl my-10">Products in {category} category </h2>
             <div className="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
               {products.map((product) => (
-                <div
+                <Link
+                  href={`/products/${encodeURIComponent(product.id)}`}
                   key={product.id}
                   className="group relative border-b border-r border-gray-200 p-4 sm:p-6"
                 >
@@ -83,7 +83,7 @@ const CategoryPage = () => {
                       <span>Left: {product.stock}</span>
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
