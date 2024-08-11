@@ -2,32 +2,147 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.stars {
+  display: flex;
+  align-items: center;
+}
+.star {
+  font-size: 2rem; /* Increase star size */
+  margin-right: 2px;
+  display: inline-block;
+  color: #f5c518; /* Golden color */
+  text-shadow: 0 0 1px #d3a10d; /* Light shadow for better appearance */
+}
+.star.full {
+  color: #f5c518; /* Golden color for full stars */
+  border-radius: 50%; /* Circular border */
+  padding: 4px; /* Padding inside the star */
+}
+.star.half {
+  position: relative;
+  color: #f5c518; /* Golden color for half stars */
+}
+.star.half::after {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f5c518; /* Golden color */
+  overflow: hidden;
+  width: 50%;
+  display: inline-block;
+  text-shadow: 0 0 1px #d3a10d; /* Light shadow for better appearance */
+}
+.star.empty {
+  color: #ccc; /* Gray color for empty stars */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.header {
+  text-align: center;
+  margin-bottom: 20px;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.product-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+}
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.product-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+.product-details {
+  padding: 10px;
+}
+.product-title {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+.product-link {
+  text-decoration: none;
+  color: #0070f3;
+  transition: color 0.3s;
+}
+.product-link:hover {
+  color: #005bb5;
+}
+.product-price {
+  font-size: 1.1rem;
+  color: #333;
+}
+.product-original-price {
+  text-decoration: line-through;
+  color: #777;
+}
+.product-rating {
+  font-size: 1.1rem;
+  color: #333;
+}
+.product-sales-volume,
+.product-delivery,
+.product-prime {
+  font-size: 1rem;
+  color: #555;
+}
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.star {
+  font-size: 1.5rem;
+  color: #f5c518;
+  text-shadow: 0 0 1px #d3a10d;
+}
+.star.full {
+  color: #f5c518;
+}
+.star.half {
+  position: relative;
+  color: #f5c518;
+}
+.star.half::after {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f5c518;
+  overflow: hidden;
+  width: 50%;
+}
+.star.empty {
+  color: #ccc;
+}
+.loading,
+.error,
+.no-data {
+  text-align: center;
+  margin: 20px 0;
 }
