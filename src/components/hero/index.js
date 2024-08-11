@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <div className="bg-white">
@@ -5,7 +7,7 @@ export default function Hero() {
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
           <img
-            alt=""
+            alt="hero"
             src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
             className="h-full w-full object-cover object-center"
           />
@@ -20,9 +22,9 @@ export default function Hero() {
             New arrivals are here
           </h1>
           <p className="mt-4 text-xl text-white">
-            The new arrivals have, well, newly arrived. Check out the latest
-            options from our summer small-batch release while they're still in
-            stock.
+            The new arrivals have&#44; well&#44; newly arrived. Check out the
+            latest options from our summer small-batch release while
+            they&apos;re still in stock.
           </p>
           <a
             href="#"

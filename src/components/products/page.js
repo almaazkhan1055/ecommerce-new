@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export default function AllProducts() {
@@ -26,6 +27,7 @@ export default function AllProducts() {
               src={product.thumbnail}
               className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
             />
+
             <h3 className="mt-6 font-medium text-gray-900 text-2xl">
               {product.title}
             </h3>

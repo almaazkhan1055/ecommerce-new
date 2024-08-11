@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ContentWrapper from "@/components/wrapper";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Navbar from "@/components/navbar";
+import Image from "next/image";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
