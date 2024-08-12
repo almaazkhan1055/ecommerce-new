@@ -1,4 +1,5 @@
 "use client";
+
 import Navbar from "@/components/navbar";
 import {
   CheckIcon,
@@ -6,6 +7,7 @@ import {
   QuestionMarkCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/20/solid";
+import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 

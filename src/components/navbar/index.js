@@ -14,7 +14,7 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import logo from "../../../public/assets/Shoppers-Stop.png";
+import logo from "../../assets/shoppers-stop.png";
 import Image from "next/image";
 
 const navigation = [
@@ -109,9 +109,8 @@ export default function Navbar() {
           className="hidden lg:flex lg:space-x-8 lg:py-2"
         >
           {navigation.map((item) => (
-            <DisclosureButton
+            <Link
               key={item.name}
-              as="a"
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
@@ -122,7 +121,7 @@ export default function Navbar() {
               )}
             >
               {item.name}
-            </DisclosureButton>
+            </Link>
           ))}
         </nav>
       </div>
@@ -130,9 +129,8 @@ export default function Navbar() {
       <DisclosurePanel as="nav" aria-label="Global" className="lg:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
           {navigation.map((item) => (
-            <DisclosureButton
+            <Link
               key={item.name}
-              as="a"
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
@@ -143,7 +141,7 @@ export default function Navbar() {
               )}
             >
               {item.name}
-            </DisclosureButton>
+            </Link>
           ))}
         </div>
         <div className="pb-3">

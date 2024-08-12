@@ -5,6 +5,7 @@ import ContentWrapper from "@/components/wrapper";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Navbar from "@/components/navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
