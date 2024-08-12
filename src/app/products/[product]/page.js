@@ -3,9 +3,11 @@
 import Navbar from "@/components/navbar";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/20/solid";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import ProductQuickview from "../productQuickview";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/app/redux/store";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -14,6 +16,9 @@ function classNames(...classes) {
 const Product = () => {
   const [selectedProduct, setSelectedProduct] = useState();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const params = useParams();
   const productId = decodeURIComponent(params.product || "");
@@ -26,6 +31,11 @@ const Product = () => {
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const handleClick = () => {
+    dispatch(addToCart(selectedProduct));
+    router.push("/checkout");
   };
 
   return (
@@ -80,6 +90,7 @@ const Product = () => {
                 <button
                   type="button"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-xl font-bold text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  onClick={handleClick}
                 >
                   Pay $ {selectedProduct?.price}
                 </button>

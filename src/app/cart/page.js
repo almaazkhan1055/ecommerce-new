@@ -1,3 +1,4 @@
+"use client";
 import Navbar from "@/components/navbar";
 import {
   CheckIcon,
@@ -5,48 +6,18 @@ import {
   QuestionMarkCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/20/solid";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    price: "$32.00",
-    color: "Sienna",
-    inStock: true,
-    size: "Large",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in sienna.",
-  },
-  {
-    id: 2,
-    name: "Basic Tee",
-    href: "#",
-    price: "$32.00",
-    color: "Black",
-    inStock: false,
-    leadTime: "3–4 weeks",
-    size: "Large",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-  },
-  {
-    id: 3,
-    name: "Nomad Tumbler",
-    href: "#",
-    price: "$35.00",
-    color: "White",
-    inStock: true,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg",
-    imageAlt: "Insulated bottle with white base and black snap lid.",
-  },
-];
-
 export default function Cart() {
+  const cartItems = useSelector((state) => state);
+  console.log("cartItems", cartItems);
+
+  const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
+  const shippingEstimate = 5.0;
+  const taxEstimate = 8.32;
+  const orderTotal = subtotal + shippingEstimate + taxEstimate;
+
   return (
     <>
       <Navbar />
@@ -65,12 +36,12 @@ export default function Cart() {
                 role="list"
                 className="divide-y divide-gray-200 border-b border-t border-gray-200"
               >
-                {products.map((product, productIdx) => (
+                {cartItems.map((product, productIdx) => (
                   <li key={product.id} className="flex py-6 sm:py-10">
                     <div className="flex-shrink-0">
                       <img
-                        alt={product.imageAlt}
-                        src={product.imageSrc}
+                        alt={product.productIdx}
+                        src={product.thumbnail}
                         className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                       />
                     </div>
@@ -80,24 +51,29 @@ export default function Cart() {
                         <div>
                           <div className="flex justify-between">
                             <h3 className="text-sm">
-                              <a
-                                href={product.href}
-                                className="font-medium text-gray-700 hover:text-gray-800"
+                              <Link
+                                href={`/products/${encodeURIComponent(
+                                  product.id
+                                )}`}
+                                className="font-bold text-xl text-gray-700 hover:text-gray-800"
                               >
-                                {product.name}
-                              </a>
+                                {product.title}
+                              </Link>
                             </h3>
                           </div>
                           <div className="mt-1 flex text-sm">
-                            <p className="text-gray-500">{product.color}</p>
-                            {product.size ? (
-                              <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-                                {product.size}
+                            <p className="text-gray-500 text-md font-semibold">
+                              {product.category}
+                            </p>
+                            {product.dimensions ? (
+                              <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500 text-md font-semibold">
+                                {product.dimensions.width}cm *
+                                {product.dimensions.height}cm
                               </p>
                             ) : null}
                           </div>
-                          <p className="mt-1 text-sm font-medium text-gray-900">
-                            {product.price}
+                          <p className="mt-1 text-xl font-bold text-gray-900">
+                            {product.price} $
                           </p>
                         </div>
 
@@ -106,7 +82,7 @@ export default function Cart() {
                             htmlFor={`quantity-${productIdx}`}
                             className="sr-only"
                           >
-                            Quantity, {product.name}
+                            Quantity, {product.title}
                           </label>
                           <select
                             id={`quantity-${productIdx}`}
@@ -139,7 +115,7 @@ export default function Cart() {
                       </div>
 
                       <p className="mt-4 flex space-x-2 text-sm text-gray-700">
-                        {product.inStock ? (
+                        {product.stock ? (
                           <CheckIcon
                             aria-hidden="true"
                             className="h-5 w-5 flex-shrink-0 text-green-500"
@@ -154,7 +130,7 @@ export default function Cart() {
                         <span>
                           {product.inStock
                             ? "In stock"
-                            : `Ships in ${product.leadTime}`}
+                            : `${product.shippingInformation}`}
                         </span>
                       </p>
                     </div>
@@ -170,20 +146,22 @@ export default function Cart() {
             >
               <h2
                 id="summary-heading"
-                className="text-lg font-medium text-gray-900"
+                className="text-2xl font-medium text-gray-900"
               >
                 Order summary
               </h2>
 
               <dl className="mt-6 space-y-4">
                 <div className="flex items-center justify-between">
-                  <dt className="text-sm text-gray-600">Subtotal</dt>
-                  <dd className="text-sm font-medium text-gray-900">$99.00</dd>
+                  <dt className="text-lg text-gray-600">Subtotal</dt>
+                  <dd className="text-lg font-medium text-gray-900">
+                    ${subtotal.toFixed(2)}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                  <dt className="flex items-center text-sm text-gray-600">
+                  <dt className="flex items-center text-lg text-gray-600">
                     <span>Shipping estimate</span>
-                    <a
+                    <Link
                       href="#"
                       className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
                     >
@@ -194,14 +172,18 @@ export default function Cart() {
                         aria-hidden="true"
                         className="h-5 w-5"
                       />
-                    </a>
+                    </Link>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.00</dd>
+                  <dd className="text-lg font-medium text-gray-900">
+                    {cartItems.length === 0
+                      ? "$ 0"
+                      : `$ ${shippingEstimate.toFixed(2)}`}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                  <dt className="flex text-sm text-gray-600">
+                  <dt className="flex text-lg text-gray-600">
                     <span>Tax estimate</span>
-                    <a
+                    <Link
                       href="#"
                       className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
                     >
@@ -212,27 +194,37 @@ export default function Cart() {
                         aria-hidden="true"
                         className="h-5 w-5"
                       />
-                    </a>
+                    </Link>
                   </dt>
-                  <dd className="text-sm font-medium text-gray-900">$8.32</dd>
+                  <dd className="text-lg font-medium text-gray-900">
+                    {cartItems.length === 0
+                      ? "$ 0"
+                      : `$ ${taxEstimate.toFixed(2)}`}
+                  </dd>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                  <dt className="text-base font-medium text-gray-900">
+                  <dt className="text-xl font-medium text-gray-900">
                     Order total
                   </dt>
-                  <dd className="text-base font-medium text-gray-900">
-                    $112.32
+                  <dd className="text-xl font-bold text-gray-900">
+                    {cartItems.length === 0
+                      ? "$ 0"
+                      : `$ ${orderTotal.toFixed(2)}`}
                   </dd>
                 </div>
               </dl>
 
               <div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                <Link
+                  href={cartItems.length === 0 ? "#" : "/checkout"}
+                  className={`w-full block text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm ${
+                    cartItems.length === 0
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-indigo-600 focus:ring-2 focus:ring-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-50 cursor-pointer"
+                  }`}
                 >
                   Checkout
-                </button>
+                </Link>
               </div>
             </section>
           </form>

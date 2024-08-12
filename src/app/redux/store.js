@@ -8,7 +8,13 @@ export const addToCart = (product) => ({
 export const initialState = [];
 
 const cartReducer = (state = initialState, action) => {
-  action.type === "ADD_TO_CART" ? [...state, action.payload] : state;
+  let cartItems = [...state, action.payload];
+
+  if (action.type === "ADD_TO_CART") {
+    return cartItems;
+  } else {
+    return state;
+  }
 };
 
 const store = createStore(cartReducer);

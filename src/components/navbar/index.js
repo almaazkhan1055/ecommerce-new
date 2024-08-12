@@ -14,11 +14,13 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import logo from "../../../public/assets/Shoppers-Stop.png";
+import Image from "next/image";
 
 const navigation = [
-  { name: "Home" },
-  { name: "Categories" },
-  { name: "Orders" },
+  { name: "Home", href: "/" },
+  { name: "Categories", href: "/categories" },
+  { name: "Orders", href: "/orders" },
 ];
 
 function classNames(...classes) {
@@ -32,13 +34,16 @@ export default function Navbar() {
     router.push("/cart");
   };
   return (
-    <Disclosure as="header" className="">
+    <Disclosure as="header" className="mt-2">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
         <div className="relative flex h-16 justify-between">
-          <div className="relative z-10 flex px-2 lg:px-0">
-            <div className="flex flex-shrink-0 items-center text-3xl">
-              E-commerce
-            </div>
+          <div className="relative flex px-2 lg:px-0">
+            <Link
+              href="/"
+              className="flex flex-shrink-0 items-center text-3xl cursor-pointer"
+            >
+              <Image src={logo} alt="logo" className="w-48" />
+            </Link>
           </div>
           <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
             <div className="w-full sm:max-w-xs">
@@ -103,26 +108,22 @@ export default function Navbar() {
           aria-label="Global"
           className="hidden lg:flex lg:space-x-8 lg:py-2"
         >
-          <Link
-            className="rounded-lg bg-white text-gray-800 hover:bg-gray-800 hover:text-white p-2"
-            href="/"
-          >
-            Home
-          </Link>
-
-          <Link
-            className="bg-white rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white p-2"
-            href="/categories"
-          >
-            Categories
-          </Link>
-
-          <Link
-            className="bg-white rounded-lg text-gray-800 hover:bg-gray-800 hover:text-white p-2"
-            href="/orders"
-          >
-            Orders
-          </Link>
+          {navigation.map((item) => (
+            <DisclosureButton
+              key={item.name}
+              as="a"
+              href={item.href}
+              aria-current={item.current ? "page" : undefined}
+              className={classNames(
+                item.current
+                  ? "bg-gray-900 text-white z-10"
+                  : "text-black hover:bg-gray-700 hover:text-white",
+                "block rounded-md px-3 py-2 text-base font-medium z-10"
+              )}
+            >
+              {item.name}
+            </DisclosureButton>
+          ))}
         </nav>
       </div>
 
@@ -137,7 +138,7 @@ export default function Navbar() {
               className={classNames(
                 item.current
                   ? "bg-gray-900 text-white"
-                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  : "text-black hover:bg-gray-700 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
@@ -151,8 +152,9 @@ export default function Navbar() {
               type="button"
               className="relative flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
-              <span className="sr-only">View notifications</span>
-              <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
+              <Link href="/cart">
+                <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
+              </Link>
             </button>
           </div>
         </div>
