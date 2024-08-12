@@ -5,6 +5,7 @@ import {
   QuestionMarkCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/20/solid";
+import { useSelector } from "react-redux";
 
 const products = [
   {

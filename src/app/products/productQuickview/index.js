@@ -1,26 +1,22 @@
 "use client";
 
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  Radio,
-  RadioGroup,
-} from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "@/app/redux/store";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductQuickview({ selectedProduct, open, setOpen }) {
-  console.log(selectedProduct);
-
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
+    dispatch(addToCart(selectedProduct));
     alert("Product added to cart");
     router.push("/cart");
   };
@@ -81,7 +77,7 @@ export default function ProductQuickview({ selectedProduct, open, setOpen }) {
                       <div className="flex items-center">
                         <p className="text-sm text-gray-700">
                           {selectedProduct?.rating}
-                          <span className="sr-only"> out of 5 stars</span>
+                          <span className="sr-only"> / 5 </span>
                         </p>
                         <div className="ml-1 flex items-center">
                           {[0, 1, 2, 3, 4].map((rating) => (
