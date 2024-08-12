@@ -14,7 +14,7 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import logo from "../../assets/shoppers-stop.png";
+import logo from "../../app/assets/Shoppers-stop.png";
 import Image from "next/image";
 
 const navigation = [
