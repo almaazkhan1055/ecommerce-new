@@ -18,10 +18,10 @@ export default function Hero() {
         />
 
         <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
-          <h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight  lg:text-6xl">
             New arrivals are here
           </h1>
-          <p className="mt-4 text-xl text-white">
+          <p className="mt-4 text-xl ">
             The new arrivals have&#44; well&#44; newly arrived. Check out the
             latest options from our summer small-batch release while
             they&apos;re still in stock.

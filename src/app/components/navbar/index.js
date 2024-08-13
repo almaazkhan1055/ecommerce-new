@@ -13,9 +13,9 @@ import {
 } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import logo from "../../app/assets/Shoppers-stop.png";
+import logo from "../../assets/Shoppers-stop.png";
 import Image from "next/image";
+import CustomizedSwitches from "../switch";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -28,11 +28,6 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push("/cart");
-  };
   return (
     <Disclosure as="header" className="mt-2">
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
@@ -68,7 +63,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="relative z-10 flex items-center lg:hidden">
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover: focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open menu</span>
               <Bars3Icon
@@ -82,31 +77,12 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-            <button
-              type="button"
-              className="relative flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              <ShoppingCartIcon
-                aria-hidden="true"
-                className="h-6 w-6"
-                onClick={handleClick}
-              />
-            </button>
-
-            <Menu as="div" className="relative ml-4 flex-shrink-0">
-              <div>
-                <MenuButton className="relative flex rounded-full text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"></MenuButton>
-              </div>
-              <MenuItems
-                transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              ></MenuItems>
-            </Menu>
+            <CustomizedSwitches />
           </div>
         </div>
         <nav
           aria-label="Global"
-          className="hidden lg:flex lg:space-x-8 lg:py-2"
+          className="hidden lg:flex items-center lg:space-x-8 lg:py-2"
         >
           {navigation.map((item) => (
             <Link
@@ -115,14 +91,17 @@ export default function Navbar() {
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.current
-                  ? "bg-gray-900 text-white z-10"
-                  : "text-black hover:bg-gray-700 hover:text-white",
+                  ? "bg-gray-900  z-10"
+                  : "text-black hover:bg-gray-700 hover:",
                 "block rounded-md px-3 py-2 text-base font-medium z-10"
               )}
             >
               {item.name}
             </Link>
           ))}
+          <Link href="/cart">
+            <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
+          </Link>
         </nav>
       </div>
 
@@ -135,8 +114,8 @@ export default function Navbar() {
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.current
-                  ? "bg-gray-900 text-white"
-                  : "text-black hover:bg-gray-700 hover:text-white",
+                  ? "bg-gray-900 "
+                  : "text-black hover:bg-gray-700 hover:",
                 "block rounded-md px-3 py-2 text-base font-medium"
               )}
             >
@@ -148,7 +127,7 @@ export default function Navbar() {
           <div className="flex items-center px-4">
             <button
               type="button"
-              className="relative flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="relative flex-shrink-0 rounded-full p-1 text-gray-400 hover: focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               <Link href="/cart">
                 <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />

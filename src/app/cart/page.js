@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/navbar";
+import Navbar from "@/app/components/navbar";
 import {
   CheckIcon,
   ClockIcon,
@@ -12,7 +12,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 export default function Cart() {
-  const cartItems = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.cart);
   console.log("cartItems", cartItems);
 
   const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
@@ -219,7 +219,7 @@ export default function Cart() {
               <div className="mt-6">
                 <Link
                   href={cartItems.length === 0 ? "#" : "/checkout"}
-                  className={`w-full block text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm ${
+                  className={`w-full block text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium  shadow-sm ${
                     cartItems.length === 0
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-indigo-600 focus:ring-2 focus:ring-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-50 cursor-pointer"

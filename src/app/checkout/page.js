@@ -1,5 +1,5 @@
 "use client";
-import ThanksModal from "@/components/thanksModal";
+import ThanksModal from "@/app/components/thanksModal";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,12 +25,12 @@ export default function CheckOut() {
 
   const modalHandler = () => {
     setIsModalOpen(true);
-    // setTimeout(() => {
-    //   router.push("/");
-    // }, 5000);
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
   };
 
-  const cartItems = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.cart);
 
   const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
   const shippingEstimate = 5.0;
@@ -92,9 +92,9 @@ export default function CheckOut() {
                       className="h-20 w-20 flex-none rounded-md object-cover object-center"
                     />
                     <div className="flex-auto space-y-1 ">
-                      <h3 className="text-white text-xl">{product.title}</h3>
+                      <h3 className=" text-xl">{product.title}</h3>
                     </div>
-                    <p className="flex-none text-xl font-medium text-white">
+                    <p className="flex-none text-xl font-medium ">
                       $ {product.price}
                     </p>
                   </li>
@@ -117,7 +117,7 @@ export default function CheckOut() {
                   <dd>${taxEstimate}</dd>
                 </div>
 
-                <div className="flex font-bold text-xl items-center justify-between border-t border-white border-opacity-10 pt-6 text-white">
+                <div className="flex font-bold text-xl items-center justify-between border-t border-white border-opacity-10 pt-6 ">
                   <dt>Total</dt>
                   <dd>${orderTotal.toFixed(2)}</dd>
                 </div>
@@ -359,7 +359,7 @@ export default function CheckOut() {
                 <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
                   <Link
                     href="#"
-                    className={`rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 ${
+                    className={`rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium  shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 ${
                       Object.values(formData).some((value) => value === "")
                         ? "opacity-50 cursor-not-allowed"
                         : ""

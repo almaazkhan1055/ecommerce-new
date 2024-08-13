@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light mode */
+body[data-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode */
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ffffff;
+}
+
 .stars {
   display: flex;
   align-items: center;
@@ -145,4 +157,8 @@
 .no-data {
   text-align: center;
   margin: 20px 0;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }

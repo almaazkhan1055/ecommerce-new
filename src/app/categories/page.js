@@ -1,6 +1,6 @@
 "use client";
-import Navbar from "@/components/navbar";
-import ContentWrapper from "@/components/wrapper";
+import Navbar from "@/app/components/navbar";
+import ContentWrapper from "@/app/components/wrapper";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -26,15 +26,13 @@ export default function Categories() {
           {allCategories?.map((category, index) => (
             <li
               key={index}
-              className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-md hover:shadow-lg"
+              className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-md hover:shadow-lg text-gray-900 hover:text-purple-600"
             >
               <Link
                 href={`/categories/${encodeURIComponent(category.name)}`}
                 className="flex w-full items-center justify-center space-x-6 p-6"
               >
-                <h3 className="text-xl font-bold truncate text-gray-900">
-                  {category.name}
-                </h3>
+                <h3 className="text-xl font-bold truncate ">{category.name}</h3>
               </Link>
             </li>
           ))}

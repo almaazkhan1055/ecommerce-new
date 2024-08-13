@@ -1,9 +1,9 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import ContentWrapper from "@/components/wrapper";
+import ContentWrapper from "@/app/components/wrapper";
 import { StarIcon } from "@heroicons/react/20/solid";
-import Navbar from "@/components/navbar";
+import Navbar from "@/app/components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 
