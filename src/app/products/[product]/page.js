@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import ProductQuickview from "../productQuickview";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/app/redux/store";
+import Image from "next/image";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -46,10 +47,12 @@ const Product = () => {
           <div className="lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16">
             <div className="lg:col-span-4 lg:row-end-1">
               <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100 flex items-center justify-center">
-                <img
+                <Image
                   alt={selectedProduct?.id}
                   src={selectedProduct?.thumbnail}
                   className="object-cover object-right"
+                  height={667}
+                  width={300}
                 />
               </div>
             </div>
@@ -140,10 +143,12 @@ const Product = () => {
                         className="flex space-x-4 text-sm text-gray-500"
                       >
                         <div className="flex-none py-10">
-                          <img
+                          <Image
                             alt=""
                             src="https://media.istockphoto.com/id/2150664654/photo/photo-of-attractive-pretty-business-lady-in-formalwear-isolated-white-background-stock-photo.jpg?s=1024x1024&w=is&k=20&c=3b-Af1Rks_cv2hJuPzqD6_R2yxQnB8xFjwQD-OcoVe4="
-                            className="h-10 w-10 rounded-full bg-gray-100 object-cover "
+                            className="h-10 w-10 rounded-full bg-gray-100 object-cover"
+                            height={40}
+                            width={40}
                           />
                         </div>
                         <div className="py-10">

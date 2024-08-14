@@ -6,10 +6,13 @@ export default function Hero() {
       <div className="relative bg-gray-900">
         {/* Decorative image and overlay */}
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-          <img
+          <Image
             alt="hero"
             src="https://tailwindui.com/img/ecommerce-images/home-page-01-hero-full-width.jpg"
             className="h-full w-full object-cover object-center"
+            width={1920}
+            height={1080}
+            layout="responsive"
           />
         </div>
         <div

@@ -32,7 +32,7 @@ const CategoryPage = () => {
     <>
       <Navbar />
       <ContentWrapper>
-        <div className="bg-white cursor-pointer ">
+        <div>
           <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8 ">
             <h2 className="text-2xl my-10">Products in {category} category </h2>
             <div className="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
@@ -47,6 +47,8 @@ const CategoryPage = () => {
                       alt={product.id}
                       src={product.thumbnail}
                       className="h-full w-full object-cover object-center"
+                      width={200} // Set appropriate width
+                      height={500} // Set appropriate height
                     />
                   </div>
                   <div className="pb-4 pt-10 text-center">

@@ -6,6 +6,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/app/redux/store";
+import Image from "next/image";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -52,10 +53,12 @@ export default function ProductQuickview({ selectedProduct, open, setOpen }) {
 
               <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:items-center lg:gap-x-8">
                 <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
-                  <img
+                  <Image
                     alt={selectedProduct?.id}
                     src={selectedProduct?.thumbnail}
                     className="object-cover object-center"
+                    width={500}
+                    height={100}
                   />
                 </div>
                 <div className="sm:col-span-8 lg:col-span-7">

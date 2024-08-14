@@ -1,6 +1,7 @@
 "use client";
 import ThanksModal from "@/app/components/thanksModal";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -86,10 +87,12 @@ export default function CheckOut() {
                     key={product.id}
                     className="flex items-start space-x-4 py-6"
                   >
-                    <img
+                    <Image
                       alt={product.title}
                       src={product.thumbnail}
                       className="h-20 w-20 flex-none rounded-md object-cover object-center"
+                      height={80}
+                      width={80}
                     />
                     <div className="flex-auto space-y-1 ">
                       <h3 className=" text-xl">{product.title}</h3>
@@ -359,7 +362,7 @@ export default function CheckOut() {
                 <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
                   <Link
                     href="#"
-                    className={`rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium  shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 ${
+                    className={`rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium  shadow-sm hover:bg-indigo-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 ${
                       Object.values(formData).some((value) => value === "")
                         ? "opacity-50 cursor-not-allowed"
                         : ""

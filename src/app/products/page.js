@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -25,10 +26,12 @@ export default function AllProducts() {
             className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center cursor-pointer shadow-lg hover:shadow-xl"
           >
             <div className="flex flex-1 flex-col p-8 bg-gray-100 rounded-md">
-              <img
+              <Image
                 alt={product.title}
                 src={product.thumbnail}
                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
+                height={128}
+                width={128}
               />
 
               <h3 className="mt-6 font-medium text-gray-900 text-2xl">

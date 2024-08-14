@@ -41,10 +41,12 @@ export default function Cart() {
                 {cartItems.map((product, productIdx) => (
                   <li key={product.id} className="flex py-6 sm:py-10">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         alt={product.productIdx}
                         src={product.thumbnail}
                         className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
+                        width={96}
+                        height={96}
                       />
                     </div>
 
@@ -219,10 +221,10 @@ export default function Cart() {
               <div className="mt-6">
                 <Link
                   href={cartItems.length === 0 ? "#" : "/checkout"}
-                  className={`w-full block text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium  shadow-sm ${
+                  className={`w-full block text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white  shadow-sm ${
                     cartItems.length === 0
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-indigo-600 focus:ring-2 focus:ring-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-50 cursor-pointer"
+                      : "bg-indigo-600 focus:ring-2 focus:ring-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-50 cursor-pointer "
                   }`}
                 >
                   Checkout

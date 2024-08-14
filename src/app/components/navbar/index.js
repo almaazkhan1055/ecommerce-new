@@ -91,9 +91,9 @@ export default function Navbar() {
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.current
-                  ? "bg-gray-900  z-10"
+                  ? "bg-gray-900 z-10"
                   : "text-black hover:bg-gray-700 hover:",
-                "block rounded-md px-3 py-2 text-base font-medium z-10"
+                "block rounded-md px-3 py-2 text-xl font-bold z-10"
               )}
             >
               {item.name}
@@ -114,9 +114,9 @@ export default function Navbar() {
               aria-current={item.current ? "page" : undefined}
               className={classNames(
                 item.current
-                  ? "bg-gray-900 "
-                  : "text-black hover:bg-gray-700 hover:",
-                "block rounded-md px-3 py-2 text-base font-medium"
+                  ? "bg-gray-900 font-bold"
+                  : "text-black hover:bg-gray-700",
+                "block rounded-md px-3 py-2 text-xl font-bold"
               )}
             >
               {item.name}
@@ -134,6 +134,7 @@ export default function Navbar() {
               </Link>
             </button>
           </div>
+          <CustomizedSwitches />
         </div>
       </DisclosurePanel>
     </Disclosure>
