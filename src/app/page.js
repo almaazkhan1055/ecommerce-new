@@ -5,17 +5,14 @@ import ContentWrapper from "@/app/components/wrapper";
 import React from "react";
 import Carousel from "./components/carousel";
 import Footer from "./components/footer";
+import Login from "./login/page";
+import Signup from "./signup/page";
+import Welcome from "./welcome";
 
 const Page = () => {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <ContentWrapper>
-        <Carousel />
-        <AllProducts />
-        <Footer />
-      </ContentWrapper>
+      <Welcome />
     </>
   );
 };

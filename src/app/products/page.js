@@ -15,6 +15,7 @@ export default function AllProducts() {
 
   return (
     <>
+      <h2 className="text-3xl font-bold mb-16">All Products</h2>
       <ul
         role="list"
         className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"

@@ -19,34 +19,34 @@ body[data-theme="dark"] {
   align-items: center;
 }
 .star {
-  font-size: 2rem; /* Increase star size */
+  font-size: 2rem;
   margin-right: 2px;
   display: inline-block;
-  color: #f5c518; /* Golden color */
-  text-shadow: 0 0 1px #d3a10d; /* Light shadow for better appearance */
+  color: #f5c518;
+  text-shadow: 0 0 1px #d3a10d;
 }
 .star.full {
-  color: #f5c518; /* Golden color for full stars */
-  border-radius: 50%; /* Circular border */
-  padding: 4px; /* Padding inside the star */
+  color: #f5c518;
+  border-radius: 50%;
+  padding: 4px;
 }
 .star.half {
   position: relative;
-  color: #f5c518; /* Golden color for half stars */
+  color: #f5c518;
 }
 .star.half::after {
   content: "★";
   position: absolute;
   left: 0;
   top: 0;
-  color: #f5c518; /* Golden color */
+  color: #f5c518;
   overflow: hidden;
   width: 50%;
   display: inline-block;
-  text-shadow: 0 0 1px #d3a10d; /* Light shadow for better appearance */
+  text-shadow: 0 0 1px #d3a10d;
 }
 .star.empty {
-  color: #ccc; /* Gray color for empty stars */
+  color: #ccc;
 }
 
 .container {

@@ -41,7 +41,6 @@ const Product = () => {
 
   return (
     <>
-      <Navbar />
       <div className="bg-white">
         <div className="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16">

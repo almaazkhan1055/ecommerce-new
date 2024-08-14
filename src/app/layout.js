@@ -6,6 +6,8 @@ import store from "./redux/store";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,7 +51,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
-          <ThemeProviderComponent>{children}</ThemeProviderComponent>
+          <ThemeProviderComponent>
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProviderComponent>
         </Provider>
       </body>
     </html>

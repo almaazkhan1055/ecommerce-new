@@ -30,7 +30,6 @@ const CategoryPage = () => {
 
   return (
     <>
-      <Navbar />
       <ContentWrapper>
         <div>
           <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8 ">

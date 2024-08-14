@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function Categories() {
   const [allCategories, setAllCategories] = useState([]);
+  console.log("allcategories", allCategories);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
@@ -15,9 +16,8 @@ export default function Categories() {
 
   return (
     <>
-      <Navbar />
       <ContentWrapper>
-        <h2 className="text-2xl my-10">Shop by category </h2>
+        <h2 className="text-3xl font-bold my-10">Shop by category </h2>
 
         <ul
           role="list"
@@ -29,7 +29,7 @@ export default function Categories() {
               className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-md hover:shadow-lg text-gray-900 hover:text-purple-600"
             >
               <Link
-                href={`/categories/${encodeURIComponent(category.name)}`}
+                href={`/categories/${encodeURIComponent(category.slug)}`}
                 className="flex w-full items-center justify-center space-x-6 p-6"
               >
                 <h3 className="text-xl font-bold truncate ">{category.name}</h3>
